@@ -44,6 +44,7 @@ public class Task2 {
 		
 		int[] answer = decryptData(price, discount, offset, readLength);
 		
+		System.out.println("Результат после применения скидки:");
 		for (int i = 0; i < answer.length; i++) {
 			System.out.print(answer[i] + ((i < answer.length - 1)?",":"\n"));
 		}
@@ -63,7 +64,7 @@ public class Task2 {
 	public static int[] decryptData(int[] price, int discount, int offset, int readLength) {
 		int[] newPrice = new int[readLength];
 		for (int i = offset; i < offset + readLength; i++) {
-			newPrice[i - offset] = (int)Math.floor(price[i] * discount / 100.0);
+			newPrice[i - offset] = (int)Math.floor(price[i] * (100 - discount) / 100.0);
 		}
 		return newPrice;
 	}

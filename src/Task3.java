@@ -5,24 +5,35 @@
 
 package TeCu;
 
-import java.awt.swing.*;
+import javax.swing.*;
 import java.io.*;
+import java.nio.file.*;
+import java.util.*; 
 
 public class Task3 {
 	
 	Task3 (JFrame parent) {
 		int tries = 0;
 		try {
-		  File conf = new File("Task3Conf.cfg");
-		  FileWriter myWriter = new FileWriter(conf);
-		  if (conf.createNewFile()) {
-			System.out.println("File created: " + myObj.getName());
-		  } else {
-			System.out.println("File already exists.");
-		  }
+			Path confFile = Paths.get("Task3Conf.cfg");
+			if(!Files.exists(confFile)) { 
+				Files.createFile(confFile);
+				Files.write(confFile, "0".getBytes());
+			}
+			List<String> configLine = Files.readAllLines(confFile);
+			if (configLine.size() > 0) tries = Integer.parseInt(configLine.iterator().next());
+			tries++;
+			Files.write(confFile, Integer.toString(tries).getBytes());
+			
 		} catch (IOException e) {}
 		
-		Toast.makeText(parent, "Time to feed your cat!", 2000).run();
+		if (tries == 3) Toast.makeText(parent, "Time to feed your cat!", 2000).run();
+	}
+	
+	public static void clearToastCount() {
+		try {
+			Files.delete(Paths.get("Task3Conf.cfg"));
+		} catch (IOException e) {}
 	}
 }
 

@@ -27,7 +27,6 @@ public class AppWindow extends JFrame {
 		JButton taskButton1 = new JButton("Задача 1");
 		JButton taskButton2 = new JButton("Задача 2");
 		JButton taskButton3 = new JButton("Задача 3");
-		taskButton3.setEnabled(false);
 	
 		menuPanel.setLayout(new java.awt.GridLayout(0, 1, 0, 0));
 		menuPanel.add(localLabel1);
@@ -49,9 +48,10 @@ public class AppWindow extends JFrame {
 			}
 		});
 		
+		taskButton3.setToolTipText("Обнулить колличество открытий");
 		taskButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent paramAnonymousActionEvent) {
-				
+				Task3.clearToastCount();
 			}
 		});
 		

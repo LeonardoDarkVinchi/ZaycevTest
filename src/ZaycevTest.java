@@ -15,7 +15,7 @@ public class ZaycevTest {
 		Console console = System.console();
         if(console == null && !GraphicsEnvironment.isHeadless()){
 			try {
-				Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"TaskZaycev.jar\""});
+				Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"ZaycevTest.jar\""});
 			} catch (Exception ex) {}
 			System.exit(0);
 		}
