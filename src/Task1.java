@@ -42,7 +42,7 @@ public class Task1 {
 		private long id;
 		private Vacancy vacancy;
 		
-		Employee(int id, String vacancy) {
+		Employee(long id, String vacancy) {
 			this.id = id;
 			this.vacancy = new Vacancy(vacancy);
 		}
